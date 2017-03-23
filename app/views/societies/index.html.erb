@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Societies</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Valor anual</th>
+      <th>Valor semestral</th>
+      <th>Valor mensual</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @societies.each do |society| %>
+      <tr>
+        <td><%= society.nombre %></td>
+        <td><%= society.descripcio %></td>
+        <td><%= society.valor_anual %></td>
+        <td><%= society.valor_semestral %></td>
+        <td><%= society.valor_mensual %></td>
+        <td><%= link_to 'Show', society %></td>
+        <td><%= link_to 'Edit', edit_society_path(society) %></td>
+        <td><%= link_to 'Destroy', society, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to "<i class='fa fa-plus-circle'></i> Nueva categoria".html_safe,
+              new_society_path, class: 'btn btn-primary btn-lg'%>
+
