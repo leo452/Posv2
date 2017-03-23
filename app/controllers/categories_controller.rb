@@ -8,6 +8,15 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
   end
+  
+  def search
+   @categories = Category.search(params[:search_param])
+      if @categories
+      render partial: 'categories/lookup'
+      else
+      render status: :not_found, nothing: true
+      end
+  end
 
   # GET /categories/1
   # GET /categories/1.json

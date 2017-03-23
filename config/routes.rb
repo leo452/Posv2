@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_scope :user do
+    get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
+  end
   resources :discounts
   resources :societies
-  devise_for :users, :controllers => { :registrations => "user/registrations" }
+  devise_for :users
   resources :categories
   root 'categories#index'
   # The priority is based upon order of creation: first created -> highest priority.
